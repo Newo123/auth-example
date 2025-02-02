@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
 import { ROUTES } from '../constants/routes';
 import { loginSchema } from '../lib/validation';
-import { useAuth } from '../providers/authProvider';
+import { useAuth } from '../providers/AuthProvider';
 import { LoginFormValues } from '../types/form';
 import { Button } from './ui/button';
 import {

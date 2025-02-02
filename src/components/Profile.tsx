@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Navigate } from '@tanstack/react-router';
 import { ROUTES } from '../constants/routes';
-import { useAuth } from '../providers/authProvider';
+import { useAuth } from '../providers/AuthProvider';
 import { userService } from '../services/userService';
 import { ProfileSkeleton } from './ProfileSkeleton';
 import { Button } from './ui/button';
