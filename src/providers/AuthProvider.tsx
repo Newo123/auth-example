@@ -14,27 +14,33 @@ import { LoginFormValues } from '../types/form';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Провайдер контекста авторизации
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const queryClient = useQueryClient();
 	const navigate = useNavigate();
 
+	// Метод обработки success от сервера для login и register
 	const onSuccess = (data: IAuthResponse) => {
 		localStorage.setItem('token', data.token);
 		queryClient.invalidateQueries({ queryKey: ['user'] });
 		navigate({ to: ROUTES.PROFILE });
 	};
+	// Метод обработки error от сервера для login и register
 	const onError = (data: AxiosError<IErrorResponse>) => {
 		if (data instanceof AxiosError) {
 			toast.error(`${data.response?.data.message}`);
 		}
 	};
 
+	// Мутация авторизации
 	const login = useMutation({
 		mutationFn: (data: LoginFormValues): Promise<IAuthResponse> =>
 			authService.login(data).then(response => response.data),
 		onSuccess: data => onSuccess(data),
 		onError: (data: AxiosError<IErrorResponse>) => onError(data),
 	});
+
+	// Мутация регистрации
 	const register = useMutation({
 		mutationFn: (data: LoginFormValues): Promise<IAuthResponse> =>
 			authService.register(data).then(response => response.data),
@@ -42,6 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		onError: (data: AxiosError<IErrorResponse>) => onError(data),
 	});
 
+	// Мутация выхода из аккаунта
 	const logout = useMutation({
 		mutationFn: authService.logout,
 		onSuccess: () => {
@@ -58,4 +65,5 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	);
 };
 
+// Делаем экспорт хука для использования контекста провайдера Auth
 export const useAuth = () => useContext(AuthContext) as AuthContextType;

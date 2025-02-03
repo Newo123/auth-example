@@ -16,6 +16,7 @@ import {
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
+// Форма авторизации в системе
 export function LoginForm() {
 	const { login } = useAuth();
 
@@ -24,7 +25,7 @@ export function LoginForm() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<LoginFormValues>({
-		resolver: zodResolver(loginSchema),
+		resolver: zodResolver(loginSchema), // делаем симбиоз плагинов zod и react-hook-form
 	});
 
 	const onSubmit = (data: LoginFormValues) => {

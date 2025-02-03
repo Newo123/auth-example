@@ -1,3 +1,4 @@
+// Роуты проекта
 export const ROUTES = {
 	HOME: '/',
 	LOGIN: '/login',

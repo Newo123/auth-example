@@ -7,8 +7,11 @@ import { ProfileSkeleton } from './ProfileSkeleton';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
+// Профиль пользователя в системе
 export function Profile() {
 	const { logout } = useAuth();
+
+	// Запрос на получение профиля
 	const {
 		data: user,
 		isFetching,
@@ -20,11 +23,13 @@ export function Profile() {
 		enabled: !!localStorage.getItem('token'),
 	});
 
+	// Если ошибка, то мы удаляем токен и отправляем пользователя на форму авторизации
 	if (isError) {
 		localStorage.removeItem('token');
 		return <Navigate to={ROUTES.LOGIN} />;
 	}
 
+	// Если запрос все еще идет мы рисуем скелетон
 	return isFetching ? (
 		<ProfileSkeleton />
 	) : (

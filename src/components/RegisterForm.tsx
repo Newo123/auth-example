@@ -17,6 +17,7 @@ import {
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 
+// форма регистрации
 export function RegisterForm() {
 	const { register: registration } = useAuth();
 	const {
@@ -24,7 +25,7 @@ export function RegisterForm() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<RegisterFormValues>({
-		resolver: zodResolver(registerSchema),
+		resolver: zodResolver(registerSchema), // делаем симбиоз плагинов zod и react-hook-form
 	});
 
 	const onSubmit = async (data: RegisterFormValues) => {

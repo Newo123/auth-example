@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# Frontend Авторизация!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Для запуска проекта нужно выполнить следующие действия
 
-Currently, two official plugins are available:
+1. Выкачиваем репозиторий в нужную директорию или можно скачать архивом:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```cmd
+git clone git@github.com:Newo123/auth-example.git auth-example
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+cd auth-example
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Устанавливаем пакеты:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```cmd
+npm install
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+yarn add
+
+pnpm install
 ```
+
+3. Для запуска проекта:
+
+```cmd
+npm run dev
+
+yarn dev
+
+pnpm dev
+```
+
+4. После запуска переходим по ссылке указанной в терминале и видим:
+   ![screenshot](/public/1.png)
+
+если нет желания регистрироваться:
+email: example@gmail.com,
+password: 123456
+
+5. Если все прошло успешно, поздравляю ты в профиле!
+   ![screenshot](/public/2.png)
